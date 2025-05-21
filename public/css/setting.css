@@ -1,0 +1,96 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px);
+    padding: 20px;
+}
+
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(91, 145, 59, 0.1);
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    position: relative;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(91, 145, 59, 0.1);
+    border-top: 4px solid #5B913B;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.text-loading {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 1.1rem;
+    color: #5B913B;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.text-loading-1 {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.memoji {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+.info-link {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.info-icon {
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    filter: invert(48%) sepia(13%) saturate(1187%) hue-rotate(71deg) brightness(90%) contrast(83%);
+}
+
+.info-icon:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+@media (max-width: 480px) {
+    .loading-content {
+        padding: 25px 20px;
+    }
+    
+    .text-loading {
+        font-size: 1rem;
+    }
+    
+    .text-loading-1 {
+        font-size: 0.85rem;
+    }
+    
+    .memoji {
+        width: 70px;
+        height: 70px;
+    }
+}
