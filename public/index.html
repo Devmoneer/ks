@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Loading Screen Styles */
+        
         #loading-screen {
             position: fixed;
             top: 0;
@@ -56,7 +56,7 @@
             100% { transform: scale(1); }
         }
         
-        /* Hide main content initially */
+        
         body > *:not(#loading-screen) {
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -64,7 +64,7 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
+    
     <div id="loading-screen">
         <img src="./images/user.svg" alt="Logo" class="loading-logo">
         <div class="loading-text">Accounting App</div>
@@ -135,12 +135,55 @@
                 <span class="category-name">بالانس</span>
             </a>
         </div>
+        </div>
 
         <div class="transactions-container">
-            <div class="box-capital">
+            </div>
+            
 
+            <div class="box-container">
+                <div class="capital-box">
+                    <h2>سەرمایە</h2>
+                    <div class="capital-amount">$</div>
+                </div>
+                
+                <!-- Update the items-grid section in index.html -->
+<div class="items-grid">
+    <div class="item" data-page="./pages/income.html">
+        <i class="fas fa-money-bill-wave"></i>
+        <span>داهات</span>
+    </div>
+    <div class="item" data-page="expenses.html">
+        <i class="fas fa-shopping-cart"></i>
+        <span>مەزاختن</span>
+    </div>
+    <div class="item" data-page="transfer.html">
+        <i class="fas fa-exchange-alt"></i>
+        <span>فەگۆهاستن</span>
+    </div>
+    <div class="item" data-page="reports.html">
+        <i class="fas fa-chart-pie"></i>
+        <span>راپۆرت</span>
+    </div>
+    <div class="item" data-page="budget.html">
+        <i class="fas fa-wallet"></i>
+        <span>بوجە</span>
+    </div>
+    <div class="item" data-page="savings.html">
+        <i class="fas fa-piggy-bank"></i>
+        <span>هەلگرتن</span>
+    </div>
+</div>
             </div>
-            </div>
+
+
+
+
+
+
+
+
+
             
         <!--end-->
     </div>
@@ -177,7 +220,7 @@
                 document.querySelectorAll('body > *:not(#loading-screen)').forEach(function(el) {
                     el.style.opacity = '1';
                 });
-            }, 500); 
+            }, 1000); 
         });
         
         
@@ -188,8 +231,8 @@
                 document.querySelectorAll('body > *:not(#loading-screen)').forEach(function(el) {
                     el.style.opacity = '1';
                 });
-            }, 500);
-        }, 10000); 
+            }, 1000);
+        }, 1000); 
     </script>
 </body>
 </html>

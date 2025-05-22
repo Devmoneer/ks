@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head content as index.html -->
+    <title>Income - Accounting App</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Same loading screen styles -->
+</head>
+<body>
+   
+      <div id="loading-screen">
+        <img src="./images/user.svg" alt="Logo" class="loading-logo">
+        <div class="loading-text">Accounting App</div>
+        <div class="loading-spinner"></div>
+    </div>
+
+    <header class="food-app-header">
+        <div class="header-top">
+            <div class="location-container">
+                <div class="icon-book">
+                <i class="fas fa-book"></i>
+                </div>
+                <div class="location-text">
+                    <span class="delivery-to">Accounting App</span>
+                    <span class="current-location">Menu</span>
+                </div>
+                <div class="icon-down">
+                <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="profile-icon">
+                <img src="./images/user.svg" alt="Profile" width="24">
+            </div>
+        </div>
+        <div class="search-container">
+            <div class="search-input-container">
+                <div class="search-icon">
+                <i class="fas fa-search"></i>
+                </div>
+                <input type="text" placeholder="...لێبگەرە" class="search-input">
+                <div class="filter-icon">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="main-content">
+        <h1>Income Section</h1>
+        <!-- Add specific content for this section -->
+        
+        <form id="income-form">
+            <input type="number" id="income-amount" placeholder="Amount">
+            <input type="text" id="income-source" placeholder="Source">
+            <button type="submit">Add Income</button>
+        </form>
+    </div>
+    
+    <!-- Same bottom nav as index.html -->
+     <nav class="bottom-nav">
+        <a href="./pages/setting.html" class="nav-item">
+            <img src="../images/setting-svgrepo-com.svg" alt="Settings" width="24">
+            <span>دەستکاری</span>
+        </a>
+        <a href="#" class="nav-item">
+            <img src="../images/dollar-svgrepo-com.svg" alt="Accounts" width="24">
+            <span>هژمار</span>
+        </a>
+        <a href="#" class="nav-item">
+            <img src="../images/personal-center-operation-record-svgrepo-com.svg" alt="Transactions" width="24">
+            <span>مامەڵە</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <img src="../images/home-smile-svgrepo-com.svg" alt="Home" width="24">
+            <span>دەسپێک</span>
+        </a>
+    </nav>
+    
+    <script src="../script/app.js"></script>
+    <script>
+        // Handle form submission
+        document.getElementById('income-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const amount = parseFloat(document.getElementById('income-amount').value);
+            const source = document.getElementById('income-source').value;
+            
+            if (amount && source) {
+                // Update capital
+                const currentCapital = parseFloat(localStorage.getItem('capitalAmount')) || 10000;
+                const newCapital = currentCapital + amount;
+                localStorage.setItem('capitalAmount', newCapital);
+                
+                // Save transaction
+                const transactions = JSON.parse(localStorage.getItem('incomeTransactions') || '[]');
+                transactions.push({
+                    amount,
+                    source,
+                    date: new Date().toLocaleDateString()
+                });
+                localStorage.setItem('incomeTransactions', JSON.stringify(transactions));
+                
+                // Update parent page's capital if we're in an iframe
+                if (window.parent && window.parent.updateCapital) {
+                    window.parent.updateCapital(newCapital);
+                }
+                
+                alert('Income added successfully!');
+                this.reset();
+            }
+        });
+        
+        // Same loading screen script as index.html
+    </script>
+</body>
+</html>
